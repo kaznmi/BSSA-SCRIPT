@@ -132,17 +132,23 @@ for _, field in ipairs(fields) do
     table.insert(fieldNames, field.Name)
 end
 
---Дропдаун ебучий
+
 local fieldTP = mainTab:AddDropdown({
     Name = "Select Field",
     Default = "Choose a field",
     Options = fieldNames,
     Callback = function(selectedField)
         local field = game.Workspace.FieldZones:FindFirstChild(selectedField)
-        local fieldBox = field
-        --Тп к филдбоксу
-        local player = game.Players.LocalPlayer
-        player.Character.HumanoidRootPart.CFrame = fieldBox.CFrame
+        fieldBox = field
     end    
+})
+
+mainTab:AddBind({
+    Name = "Tp to Field",
+    Default = Enum.KeyCode.X,
+    Hold = false,
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = fieldBox.CFrame
+    end
 })
 OrionLib:Init()
