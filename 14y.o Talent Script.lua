@@ -75,13 +75,19 @@ mainTab:AddToggle({
     Callback = function(value)
         safetyenabled = value
         while safetyenabled do
-            local monst = game.Workspace.PlayerMonsters:FindFirstChild(plr):FindFirstChildOfClass("Model"):FindFirstChildOfClass("Model")
-            local head = game.Workspace.PlayerMonsters:FindFirstChild(plr):FindFirstChildOfClass("Model"):FindFirstChild("Head")
-            if monst or head then
-                monst:Destroy() --Ебашу тело
-                head:Destroy() --А это чтобы не пропадал после удаления тела
+            local playerMonsters = game.Workspace.PlayerMonsters:FindFirstChild(plr)
+            if playerMonsters then
+                for _, monster in ipairs(playerMonsters:GetChildren()) do
+                    if monster:IsA("Model") then
+                        local head = monster:FindFirstChild("Head")
+                        if head then
+                            head:Destroy()
+                        end
+                        monster:Destroy()
+                    end
+                end
             end
-            wait(3)
+            wait(0.5)
         end
     end
 })
