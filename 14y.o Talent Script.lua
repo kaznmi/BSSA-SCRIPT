@@ -84,9 +84,7 @@ mainTab:AddToggle({
                     end
                 end
                 for _, poison in ipairs(serverEffects) do
-                    if poison.Name = "Poison" then
-                        poison:Destroy()
-                    end
+                    poison:Destroy()
                 end
             end
             wait(0.005)
