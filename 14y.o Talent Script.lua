@@ -79,6 +79,7 @@ mainTab:AddToggle({
             if playerMonsters then
                 for _, monster in ipairs(playerMonsters:GetChildren()) do
                     if monster:IsA("Model") then
+                        monster:Destroy()
                         local head = monster:FindFirstChild("Head")
                         if head then
                             head:Destroy()
