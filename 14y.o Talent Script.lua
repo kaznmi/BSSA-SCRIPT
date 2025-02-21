@@ -76,10 +76,16 @@ mainTab:AddToggle({
         safetyenabled = value
         while safetyenabled do
             local playerMonsters = game.Workspace.PlayerMonsters:FindFirstChild(plr)
-            if playerMonsters then
+            local serverEffects = game.Workspace.ServerEffects:GetChildren()
+            if playerMonsters and serverEffects then
                 for _, monster in ipairs(playerMonsters:GetChildren()) do
                     if monster:IsA("Model") then
                         monster:Destroy()
+                    end
+                end
+                for _, poison in ipairs(serverEffects) do
+                    if poison.Name("Poison") then
+                        poison:Destroy()
                     end
                 end
             end
