@@ -80,15 +80,10 @@ mainTab:AddToggle({
                 for _, monster in ipairs(playerMonsters:GetChildren()) do
                     if monster:IsA("Model") then
                         monster:Destroy()
-                        local head = monster:FindFirstChild("Head")
-                        if head then
-                            head:Destroy()
-                        end
-                        monster:Destroy()
                     end
                 end
             end
-            wait(0.5)
+            wait(0.005)
         end
     end
 })
