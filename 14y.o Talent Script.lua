@@ -77,22 +77,16 @@ mainTab:AddToggle({
         while safetyenabled do
             local playerMonsters = game.Workspace.PlayerMonsters:FindFirstChild(plr)
             local serverEffects = game.Workspace.ServerEffects
-            
-            if playerMonsters then
-                for _, monster in ipairs(playerMonsters:GetChildren()) do
+            for _, monster in ipairs(playerMonsters:GetChildren()) do
                     if monster:IsA("Model") then
                         monster:Destroy()
                     end
                 end
+            for _, poison in ipairs(serverEffects:GetChildren()) do
+                poison:Destroy()
             end
             
-            if serverEffects then
-                for _, poison in ipairs(serverEffects:GetChildren()) do
-                    poison:Destroy()
-                end
-            end
-            
-            wait(0.001)  -- Увеличиваем интервал для снижения нагрузки
+            wait(0.01)  -- Увеличиваем интервал для снижения нагрузки
         end
     end
 })
